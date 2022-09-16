@@ -1,0 +1,9 @@
+env/
+.env
+.git
+.gitlab-ci.yml
+example.env
+README.md
+*Dockerfile
+docker-compose.yml
+pgdata
