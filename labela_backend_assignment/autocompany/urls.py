@@ -19,12 +19,11 @@ from autocompany import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('parts', views.part_list),
-    path('parts/<int:id>', views.part_details),
-    path('users', views.user_list),
-    path('users/cart', views.user_cart),
-    path('users/orders', views.order),
-    path('users/orders/update', views.update_order),
-    path('users/purchase', views.purchase),
-
+    path('parts', views.part_list, name='parts'),
+    path('parts/<int:id>', views.part_details, name='part_details'),
+    path('users', views.user_list, name='user_list'),
+    path('users/cart', views.user_cart, name='user_cart'),
+    path('users/orders', views.order, name='orders'),
+    path('users/orders/update', views.update_order, name='update'),
+    path('users/purchase', views.purchase, name='purchase'),
 ]
