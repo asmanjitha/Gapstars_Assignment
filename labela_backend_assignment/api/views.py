@@ -68,6 +68,10 @@ def user_cart(request):
                     parts = [str(element) for element in cart.parts.split(",")]
 
                     if not str(request.data['part_id']) in parts:
+                        try:
+                            part_val = Part.objects.get(id=request.data['part_id'])
+                        except:
+                            return Response({'error': "No such part available"}, status=status.HTTP_404_NOT_FOUND)
                         parts.append(str(request.data['part_id']))
                     else:
                         pass
