@@ -24,7 +24,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 #--------------------------------USER-------------------------------------------------------------------
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def user_list(request):
     
     if request.method == 'GET':
@@ -32,20 +32,7 @@ def user_list(request):
         #serialize and return as a JSON
         users = User.objects.all()
         serializer = UserSerializer(users, many = True)
-        return Response({'data': serializer.data})
-    
-    if request.method == 'POST':
-        #Save new user
-        username = request.data['username']
-        password = request.data['password']
-        email = request.data['email']
-        name = request.data['name']
-        user = User.create(name=name, username=username, email=email, password=password)
-        serializer = UserSerializer(data=user.__dict__)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'msg':'data saved', 'data':serializer.data}, status=status.HTTP_201_CREATED)
-        return Response({'error': 'user creation failed'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'data': serializer.data}, status=status.HTTP_200_OK)
     
 @api_view(['POST'])
 def user_signup(request):
@@ -65,9 +52,9 @@ def user_login(request):
     username = request.data['username']
     password = request.data['password']
     email = request.data['email']
-    user = User.create(name=name, username=username, email=email, password=password)
+    user = User.create(username=username, email=email, password=password)
     serializer = UserSerializer(data=user.__dict__)
     if serializer.is_valid():
         serializer.save()
-        return Response({'msg':'user created, please login now', 'data':serializer.data}, status=status.HTTP_201_CREATED)
+        return Response({'msg':'user created, please login now', 'data':serializer.data}, status=status.HTTP_200_OK)
     return Response({'error': 'user creation failed'}, status=status.HTTP_400_BAD_REQUEST)

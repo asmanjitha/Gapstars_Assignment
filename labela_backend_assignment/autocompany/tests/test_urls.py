@@ -2,7 +2,7 @@ import imp
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from api.views import part_list, part_details, user_cart, purchase, order, update_order
-from users.views import user_list, user_login, user_signup
+from users.views import user_list, user_signup, MyTokenObtainPairView
 
 
 class TestURLs(SimpleTestCase):
@@ -17,6 +17,10 @@ class TestURLs(SimpleTestCase):
     def test_user_list_url(self):
         url = reverse('user_list')
         self.assertEquals(resolve(url).func, user_list)
+    
+    def test_user_signup_url(self):
+        url = reverse('user_signup')
+        self.assertEquals(resolve(url).func, user_signup)
 
     def test_user_cart_url(self):
         url = reverse('user_cart')

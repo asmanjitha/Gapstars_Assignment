@@ -12,6 +12,4 @@ urlpatterns = [
     path('orders', views.order, name='orders'),
     path('orders/update', views.update_order, name='update'),
     path('purchase', views.purchase, name='purchase'),
-    # path('users/token', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('users/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]

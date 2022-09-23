@@ -1,31 +1,13 @@
 from django.http import JsonResponse
 from .models import Cart, Order, Part
 from users.models import MyUser as User
-from autocompany.serializers import CartSerializer, OrderSerializer, PartSerializer, UserSerializer
+from autocompany.serializers import CartSerializer, OrderSerializer, PartSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 import sys
 from datetime import datetime
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
-
-
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     @classmethod
-#     def get_token(cls, user):
-#         token = super().get_token(user)
-
-#         # Add custom claims
-#         token['username'] = user.username
-#         token['email'] = user.email
-#         token['user_id'] = user.id
-
-#         return token
-
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
 
 
 
