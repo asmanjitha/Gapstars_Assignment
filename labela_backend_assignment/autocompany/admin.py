@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Cart, Order, Part, User
+from api.models import Cart, Order, Part
+from users.models import MyUser as User
 
 admin.site.register(Part)
 admin.site.register(User)

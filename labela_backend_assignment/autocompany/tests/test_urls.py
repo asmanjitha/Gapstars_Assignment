@@ -1,7 +1,8 @@
 import imp
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from autocompany.views import part_list, part_details, user_list, user_cart, purchase, order, update_order
+from api.views import part_list, part_details, user_cart, purchase, order, update_order
+from users.views import user_list, user_login, user_signup
 
 
 class TestURLs(SimpleTestCase):
