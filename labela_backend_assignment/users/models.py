@@ -11,7 +11,7 @@ class MyUser(AbstractUser):
    username = models.CharField(max_length=250, unique=True)
 
    USERNAME_FIELD = 'email'
-   REQUIRED_FIELDS = ['password']
+   REQUIRED_FIELDS = ['password', 'username']
 
    @classmethod
    def create(cls, name, username, email, password):
